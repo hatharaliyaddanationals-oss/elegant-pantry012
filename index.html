@@ -170,7 +170,7 @@
       font-size: 1.1rem;
     }
 
-    /* Items Grid - 10+ products */
+    /* Items Grid */
     .items-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -294,7 +294,6 @@
       background: #FEFCF5;
     }
 
-    /* responsive */
     @media (max-width: 680px) {
       .container { padding: 0 18px; }
       .nav-btn { padding: 6px 16px; font-size: 0.85rem; }
@@ -333,7 +332,7 @@
     </div>
   </div>
 
-  <!-- ================= ITEMS PAGE (10+ products, categories + BUY NOW whatsapp) ================= -->
+  <!-- ================= ITEMS PAGE ================= -->
   <div id="itemsPage" class="page">
     <div class="sub-nav" id="categoryFilter">
       <button class="cat-btn active-cat" data-cat="all">All Items</button>
@@ -342,7 +341,6 @@
       <button class="cat-btn" data-cat="PANTRY OR KITCHEN">PANTRY OR KITCHEN</button>
     </div>
     <div id="itemsContainer" class="items-grid">
-      <!-- dynamic items injected via JS (10+ products) -->
       <div class="no-items">Loading elegant collection...</div>
     </div>
     <div style="background:#F0EDE5; border-radius:24px; padding:16px 24px; margin-top:40px; font-size:0.85rem; color:#4F3E2E;">
@@ -382,31 +380,30 @@
 
 <script>
   // ----------------------------------------------
-  // ELEGANT PANTRY - 10+ PREMIUM PRODUCTS (PANTRY, KITCHEN, PANTRY OR KITCHEN)
-  // Each item has: title, description, image, category, unique product code
-  // Buy Now button sends WhatsApp message to 0779186182 with product name + custom note
+  // ELEGANT PANTRY - PRODUCTS WITH LOCAL IMAGE PLACEHOLDERS
+  // Each image src is set to "your-photo.jpg" - YOU CAN CHANGE THIS TO YOUR DESKTOP IMAGE FILE NAME
+  // Example: if your image is "pantry1.jpg", replace "your-photo.jpg" with "pantry1.jpg"
   // ----------------------------------------------
-  const WHATSAPP_NUMBER = "94779186182";   // international format without '+'
+  const WHATSAPP_NUMBER = "94779186182";
 
   const products = [
-    { id: 1, title: "Golden Spice Canister Set", description: "Three premium airtight jars with 24k gold finish, keep spices fresh for months. Elegant gift box.", image: "img src=1.jpg", category: "PANTRY" },
-    { id: 2, title: "Azure Cast Iron Dutch Oven", description: "Deep blue enamel, 5.5L capacity, excellent heat retention for slow cooking & baking.", image: "https://images.unsplash.com/photo-1584990347449-f0de1e6dacd3?w=500&h=300&fit=crop", category: "KITCHEN" },
-    { id: 3, title: "Marble & Gold Serving Board", description: "Luxury rectangular board, dual-purpose: charcuterie or pantry display. Non-porous.", image: "https://images.unsplash.com/photo-1606914502601-33f4f2c7e0c5?w=500&h=300&fit=crop", category: "PANTRY OR KITCHEN" },
-    { id: 4, title: "Herb Keeper with Gold Lid", description: "Keep basil, cilantro fresh up to 2 weeks. Blue glass body, gold seal.", image: "https://images.unsplash.com/photo-1615485500704-8e990f9900f2?w=500&h=300&fit=crop", category: "PANTRY" },
-    { id: 5, title: "Olive Wood Utensil Set (6pcs)", description: "Handcrafted in Italy, golden oil finish, ergonomic spoons & spatulas.", image: "https://images.unsplash.com/photo-1584395630827-860ee24fe93c?w=500&h=300&fit=crop", category: "KITCHEN" },
-    { id: 6, title: "Dual-Use Glass Canister", description: "Air-tight jar with bamboo lid & gold accent – perfect for pantry rice or kitchen counters.", image: "https://images.unsplash.com/photo-1585687171678-5a9a99ab45c9?w=500&h=300&fit=crop", category: "PANTRY OR KITCHEN" },
-    { id: 7, title: "Royal Blue Teapot & Infuser", description: "Porcelain teapot with golden handle, includes stainless steel infuser. 1.2L.", image: "https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=500&h=300&fit=crop", category: "KITCHEN" },
-    { id: 8, title: "Gold Edge Dinner Plates (4pcs)", description: "Stoneware plates with gleaming gold rim, dishwasher safe. Elegant dining.", image: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=500&h=300&fit=crop", category: "KITCHEN" },
-    { id: 9, title: "Organic Spice Rack (12 Jars)", description: "Premium glass jars with gold labels, includes turmeric, cumin, paprika & more.", image: "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=500&h=300&fit=crop", category: "PANTRY" },
-    { id: 10, title: "Bamboo & Blue Knife Block", description: "Magnetic bamboo block with 5 knives, blue ceramic coating. Modern & safe.", image: "https://images.unsplash.com/photo-1593618998160-e3408e676e6e?w=500&h=300&fit=crop", category: "KITCHEN" },
-    { id: 11, title: "Glass Oil & Vinegar Dispenser", description: "Gold pouring spouts, leak-proof. Elegant duo set for pantry or kitchen island.", image: "https://images.unsplash.com/photo-1603201667141-5a2d4c673378?w=500&h=300&fit=crop", category: "PANTRY OR KITCHEN" },
-    { id: 12, title: "Linen Apron with Gold Embroidery", description: "Adjustable apron, 'Elegant Pantry' gold embroidery, soft and durable.", image: "https://images.unsplash.com/photo-1585518419759-7fe0e63f0b8c?w=500&h=300&fit=crop", category: "PANTRY OR KITCHEN" }
+    { id: 1, title: "Golden Spice Canister Set", description: "Three premium airtight jars with 24k gold finish, keep spices fresh for months. Elegant gift box.", image: "1.jpg", category: "PANTRY" },
+    { id: 2, title: "Azure Cast Iron Dutch Oven", description: "Deep blue enamel, 5.5L capacity, excellent heat retention for slow cooking & baking.", image: "2.jpg", category: "KITCHEN" },
+    { id: 3, title: "Marble & Gold Serving Board", description: "Luxury rectangular board, dual-purpose: charcuterie or pantry display. Non-porous.", image: "3.jpg", category: "PANTRY OR KITCHEN" },
+    { id: 4, title: "Herb Keeper with Gold Lid", description: "Keep basil, cilantro fresh up to 2 weeks. Blue glass body, gold seal.", image: "4.jpg", category: "PANTRY" },
+    { id: 5, title: "Olive Wood Utensil Set (6pcs)", description: "Handcrafted in Italy, golden oil finish, ergonomic spoons & spatulas.", image: "5.jpg", category: "KITCHEN" },
+    { id: 6, title: "Dual-Use Glass Canister", description: "Air-tight jar with bamboo lid & gold accent – perfect for pantry rice or kitchen counters.", image: "6.jpg", category: "PANTRY OR KITCHEN" },
+    { id: 7, title: "Royal Blue Teapot & Infuser", description: "Porcelain teapot with golden handle, includes stainless steel infuser. 1.2L.", image: "7.jpg", category: "KITCHEN" },
+    { id: 8, title: "Gold Edge Dinner Plates (4pcs)", description: "Stoneware plates with gleaming gold rim, dishwasher safe. Elegant dining.", image: "8.jpg", category: "KITCHEN" },
+    { id: 9, title: "Organic Spice Rack (12 Jars)", description: "Premium glass jars with gold labels, includes turmeric, cumin, paprika & more.", image: "your-photo.jpg", category: "PANTRY" },
+    { id: 10, title: "Bamboo & Blue Knife Block", description: "Magnetic bamboo block with 5 knives, blue ceramic coating. Modern & safe.", image: "your-photo.jpg", category: "KITCHEN" },
+    { id: 11, title: "Glass Oil & Vinegar Dispenser", description: "Gold pouring spouts, leak-proof. Elegant duo set for pantry or kitchen island.", image: "your-photo.jpg", category: "PANTRY OR KITCHEN" },
+    { id: 12, title: "Linen Apron with Gold Embroidery", description: "Adjustable apron, 'Elegant Pantry' gold embroidery, soft and durable.", image: "your-photo.jpg", category: "PANTRY OR KITCHEN" }
   ];
 
   let activeCategory = "all";
-  let allItems = [...products];   // total 12 products (more than 10)
+  let allItems = [...products];
 
-  // DOM elements
   const itemsContainer = document.getElementById("itemsContainer");
   const homePage = document.getElementById("homePage");
   const itemsPage = document.getElementById("itemsPage");
@@ -414,16 +411,13 @@
   const contactPage = document.getElementById("contactPage");
   const navBtns = document.querySelectorAll(".nav-btn");
 
-  // Helper: send WhatsApp message with product info
   function sendWhatsApp(productTitle, productId) {
-    // Pre-filled message: "Hi Elegant Pantry, I'm interested in buying [Product Name] (ID: #id). Please let me know the price and availability."
     const message = `Hello Elegant Pantry! 👋 I would like to purchase *${productTitle}* (Product ID: #${productId}). Please share price, stock info, and payment options. Thank you! ✨`;
     const encodedMsg = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMsg}`;
     window.open(whatsappUrl, "_blank");
   }
 
-  // Render items based on active category
   function renderItems() {
     let filtered = [];
     if (activeCategory === "all") {
@@ -441,7 +435,7 @@
     for (let item of filtered) {
       html += `
         <div class="item-card">
-          <img class="item-img" src="${escapeHtml(item.image)}" alt="${escapeHtml(item.title)}" onerror="this.src='https://placehold.co/500x300?text=Elegant+Item'">
+          <img class="item-img" src="${escapeHtml(item.image)}" alt="${escapeHtml(item.title)}" onerror="this.src='https://placehold.co/500x300?text=Image+Not+Found'">
           <div class="item-info">
             <div class="item-title">${escapeHtml(item.title)}</div>
             <div class="item-category-badge">${escapeHtml(item.category)}</div>
@@ -453,7 +447,6 @@
     }
     itemsContainer.innerHTML = html;
 
-    // Attach event listeners to all Buy Now buttons
     const buyButtons = document.querySelectorAll(".buy-btn");
     buyButtons.forEach(btn => {
       btn.addEventListener("click", (e) => {
@@ -465,7 +458,6 @@
     });
   }
 
-  // escape HTML to avoid injection
   function escapeHtml(str) {
     if (!str) return "";
     return str.replace(/[&<>]/g, function(m) {
@@ -476,14 +468,12 @@
     });
   }
 
-  // Category filtering logic
   function initCategoryFilters() {
     const catButtons = document.querySelectorAll(".cat-btn");
     catButtons.forEach(btn => {
       btn.addEventListener("click", (e) => {
         const cat = btn.getAttribute("data-cat");
         activeCategory = cat;
-        // update active class on category buttons
         document.querySelectorAll(".cat-btn").forEach(btn2 => {
           if (btn2.getAttribute("data-cat") === cat) {
             btn2.classList.add("active-cat");
@@ -491,12 +481,11 @@
             btn2.classList.remove("active-cat");
           }
         });
-        renderItems();    // re-render grid with new category
+        renderItems();
       });
     });
   }
 
-  // Page navigation
   function showPage(pageId) {
     homePage.classList.remove("active-page");
     itemsPage.classList.remove("active-page");
@@ -506,13 +495,11 @@
     if (pageId === "home") homePage.classList.add("active-page");
     if (pageId === "items") {
       itemsPage.classList.add("active-page");
-      // ensure items are rendered when page is shown (refresh if needed)
       renderItems();
     }
     if (pageId === "about") aboutPage.classList.add("active-page");
     if (pageId === "contact") contactPage.classList.add("active-page");
 
-    // update nav active style
     navBtns.forEach(btn => {
       if (btn.getAttribute("data-page") === pageId) {
         btn.classList.add("active");
@@ -522,7 +509,6 @@
     });
   }
 
-  // navigation event binding
   function bindNavigation() {
     navBtns.forEach(btn => {
       btn.addEventListener("click", () => {
@@ -532,17 +518,13 @@
     });
   }
 
-  // initial load: set default category = all, render products, set active page to HOME
   function init() {
     bindNavigation();
     initCategoryFilters();
-    renderItems();   // preload items (home page not yet showing items but ready)
-    // by default home page active, but ensure items data is ready for later
+    renderItems();
     showPage("home");
-    // also add fallback for items page if needed
   }
 
-  // start
   init();
 </script>
 </body>
